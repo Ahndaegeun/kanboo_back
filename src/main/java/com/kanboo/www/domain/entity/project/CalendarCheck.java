@@ -1,7 +1,9 @@
 package com.kanboo.www.domain.entity.project;
 
 import com.kanboo.www.domain.entity.member.Member;
+import com.kanboo.www.dto.project.CalendarCheckDTO;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -12,6 +14,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "calendar_check")
+@Builder
 public class CalendarCheck {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,4 +28,12 @@ public class CalendarCheck {
     @ManyToOne
     @JoinColumn(name = "mem_idx")
     private Member member;
+
+    public CalendarCheckDTO entityToDto() {
+        return CalendarCheckDTO.builder()
+                .idx(idx)
+                .calendar(calendar.entityToDto())
+                .member(member.entityToDto())
+                .build();
+    }
 }

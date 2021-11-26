@@ -1,6 +1,8 @@
 package com.kanboo.www.domain.entity.board;
 
+import com.kanboo.www.dto.board.BoardFileDTO;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -11,6 +13,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "file")
+@Builder
 public class BoardFile {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,4 +26,12 @@ public class BoardFile {
 
     @Column(name = "file_name")
     private String name;
+
+    public BoardFileDTO entityToDto() {
+        return BoardFileDTO.builder()
+                .idx(idx)
+                .board(board.entityToDto())
+                .name(name)
+                .build();
+    }
 }

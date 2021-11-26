@@ -1,6 +1,8 @@
 package com.kanboo.www.domain.entity.project;
 
+import com.kanboo.www.dto.project.GanttDTO;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -12,6 +14,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "gantt")
+@Builder
 public class Gantt {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -42,4 +45,18 @@ public class Gantt {
 
     @Column(name = "gt_title")
     private String title;
+
+    public GanttDTO entityToDto() {
+        return GanttDTO.builder()
+                .idx(idx)
+                .project(project.entityToDto())
+                .state(state)
+                .priority(priority)
+                .progress(progress)
+                .startDate(startDate)
+                .endDate(endDate)
+                .explanation(explanation)
+                .title(title)
+                .build();
+    }
 }

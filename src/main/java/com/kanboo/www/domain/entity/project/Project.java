@@ -1,6 +1,8 @@
 package com.kanboo.www.domain.entity.project;
 
+import com.kanboo.www.dto.project.ProjectDTO;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -12,6 +14,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "project")
+@Builder
 public class Project {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,4 +35,15 @@ public class Project {
 
     @Column(name = "prjct_del_at")
     private String isDelete;
+
+    public ProjectDTO entityToDto() {
+        return ProjectDTO.builder()
+                .idx(idx)
+                .name(name)
+                .startDate(startDate)
+                .endDate(endDate)
+                .progress(progress)
+                .isDelete(isDelete)
+                .build();
+    }
 }

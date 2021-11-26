@@ -1,7 +1,9 @@
 package com.kanboo.www.domain.entity.project;
 
 import com.kanboo.www.domain.entity.member.Member;
+import com.kanboo.www.dto.project.CalendarDTO;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -13,6 +15,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "calendar")
+@Builder
 public class Calendar {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -50,4 +53,20 @@ public class Calendar {
 
     @Column(name = "cal_del_resn")
     private String reasonOfDelete;
+
+    public CalendarDTO entityToDto() {
+        return CalendarDTO.builder()
+                .idx(idx)
+                .project(project.entityToDto())
+                .member(member.entityToDto())
+                .startDate(startDate)
+                .endDate(endDate)
+                .color(color)
+                .classification(classification)
+                .content(content)
+                .title(title)
+                .isDelete(isDelete)
+                .reasonOfDelete(reasonOfDelete)
+                .build();
+    }
 }

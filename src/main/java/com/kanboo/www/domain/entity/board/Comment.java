@@ -1,7 +1,9 @@
 package com.kanboo.www.domain.entity.board;
 
 import com.kanboo.www.domain.entity.member.Member;
+import com.kanboo.www.dto.board.CommentDTO;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -13,6 +15,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "answer")
+@Builder
 public class Comment {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,4 +41,16 @@ public class Comment {
 
     @Column(name = "answer_del_at")
     private String isDelete;
+
+    public CommentDTO entityToDto() {
+        return CommentDTO.builder()
+                .idx(idx)
+                .board(board.entityToDto())
+                .member(member.entityToDto())
+                .content(content)
+                .numberOfReport(numberOfReport)
+                .writeDate(writeDate)
+                .isDelete(isDelete)
+                .build();
+    }
 }

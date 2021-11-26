@@ -1,7 +1,9 @@
 package com.kanboo.www.domain.entity.project;
 
 import com.kanboo.www.domain.entity.member.Member;
+import com.kanboo.www.dto.project.NotificationDTO;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -13,6 +15,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "notification")
+@Builder
 public class Notification {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,4 +41,16 @@ public class Notification {
 
     @Column(name = "ntcn_se")
     private String classification;
+
+    public NotificationDTO entityToDto() {
+        return NotificationDTO.builder()
+                .idx(idx)
+                .member(member.entityToDto())
+                .project(project.entityToDto())
+                .content(content)
+                .isRead(isRead)
+                .notificationDate(notificationDate)
+                .classification(classification)
+                .build();
+    }
 }

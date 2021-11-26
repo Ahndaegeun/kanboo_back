@@ -1,7 +1,9 @@
 package com.kanboo.www.domain.entity.project;
 
 import com.kanboo.www.domain.entity.member.Member;
+import com.kanboo.www.dto.project.KanbanItemDTO;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -13,6 +15,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "kanban_item")
+@Builder
 public class KanbanItem {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,4 +44,17 @@ public class KanbanItem {
 
     @Column(name = "kb_color")
     private String color;
+
+    public KanbanItemDTO entityToDto() {
+        return KanbanItemDTO.builder()
+                .idx(idx)
+                .kanban(kanban.entityToDto())
+                .member(member.entityToDto())
+                .content(content)
+                .itemNumber(itemNumber)
+                .kanbanDate(kanbanDate)
+                .badge(badge)
+                .color(color)
+                .build();
+    }
 }

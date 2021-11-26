@@ -1,6 +1,8 @@
 package com.kanboo.www.domain.entity.project;
 
+import com.kanboo.www.dto.project.DemandContentDTO;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -11,6 +13,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "demand_content")
+@Builder
 public class DemandContent {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,4 +44,18 @@ public class DemandContent {
 
     @Column(name = "demand_cn_rm")
     private String remark;
+
+    public DemandContentDTO entityToDto() {
+        return DemandContentDTO.builder()
+                .idx(idx)
+                .demand(demand.entityToDto())
+                .demandNumber(demandNumber)
+                .classification(classification)
+                .id(id)
+                .name(name)
+                .detail(detail)
+                .request(request)
+                .remark(remark)
+                .build();
+    }
 }

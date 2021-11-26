@@ -1,6 +1,8 @@
 package com.kanboo.www.domain.entity.project;
 
+import com.kanboo.www.dto.project.CompilerContentDTO;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -11,6 +13,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "compiler_file")
+@Builder
 public class CompilerContent {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,4 +26,12 @@ public class CompilerContent {
 
     @Column(name = "com_file_cn")
     private String content;
+
+    public CompilerContentDTO entityToDto() {
+        return CompilerContentDTO.builder()
+                .idx(idx)
+                .compiler(compiler.entityToDto())
+                .content(content)
+                .build();
+    }
 }

@@ -1,7 +1,9 @@
 package com.kanboo.www.domain.entity.project;
 
 import com.kanboo.www.domain.entity.member.Member;
+import com.kanboo.www.dto.project.IssueDTO;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -13,6 +15,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "issue")
+@Builder
 public class Issue {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,4 +36,15 @@ public class Issue {
     private LocalDateTime issueDate;
     @Column(name = "issue_state")
     private String state;
+
+    public IssueDTO entityToDto() {
+        return IssueDTO.builder()
+                .idx(idx)
+                .project(project.entityToDto())
+                .member(member.entityToDto())
+                .content(content)
+                .issueDate(issueDate)
+                .state(state)
+                .build();
+    }
 }

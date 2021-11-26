@@ -1,6 +1,8 @@
 package com.kanboo.www.domain.entity.project;
 
+import com.kanboo.www.dto.project.CompilerDTO;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -11,6 +13,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "compiler")
+@Builder
 public class Compiler {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,4 +33,14 @@ public class Compiler {
 
     @Column(name = "com_nm")
     private String name;
+
+    public CompilerDTO entityToDto() {
+        return CompilerDTO.builder()
+                .idx(idx)
+                .project(project.entityToDto())
+                .compiler(compiler.entityToDto())
+                .classification(classification)
+                .name(name)
+                .build();
+    }
 }

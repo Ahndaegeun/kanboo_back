@@ -1,6 +1,8 @@
 package com.kanboo.www.domain.entity.member;
 
+import com.kanboo.www.dto.member.MemberDTO;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -11,6 +13,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "member")
+@Builder
 public class Member {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,4 +43,18 @@ public class Member {
 
     @Column(name = "mem_pass")
     private String password;
+
+    public MemberDTO entityToDto() {
+        return MemberDTO.builder()
+                .idx(idx)
+                .id(id)
+                .nickname(nickname)
+                .phoneNumber(phoneNumber)
+                .token(token)
+                .kTag(kTag)
+                .image(image)
+                .authority(authority)
+                .password(password)
+                .build();
+    }
 }

@@ -2,7 +2,9 @@ package com.kanboo.www.domain.entity.member;
 
 import com.kanboo.www.domain.entity.member.idclass.ProjectMemberId;
 import com.kanboo.www.domain.entity.project.Project;
+import com.kanboo.www.dto.member.ProjectMemberDTO;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -14,6 +16,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Table(name = "project_member")
 @IdClass(ProjectMemberId.class)
+@Builder
 public class ProjectMember {
 
     @Id
@@ -28,4 +31,12 @@ public class ProjectMember {
 
     @Column(name = "prjct_mem_role")
     private String role;
+
+    public ProjectMemberDTO entityToDto() {
+        return ProjectMemberDTO.builder()
+                .member(member.entityToDto())
+                .project(project.entityToDto())
+                .role(role)
+                .build();
+    }
 }

@@ -1,7 +1,9 @@
 package com.kanboo.www.domain.entity.board;
 
 import com.kanboo.www.domain.entity.member.Member;
+import com.kanboo.www.dto.board.BoardDTO;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -12,6 +14,7 @@ import java.time.LocalDateTime;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 @Table(name = "board")
 public class Board {
 
@@ -44,4 +47,17 @@ public class Board {
     @Column(name = "file_at")
     private String isFile;
 
+    public BoardDTO entityToDto() {
+        return BoardDTO.builder()
+                .idx(idx)
+                .member(member.entityToDto())
+                .content(content)
+                .writeDate(writeDate)
+                .like(like)
+                .numberOfReport(numberOfReport)
+                .isDelete(isDelete)
+                .category(category)
+                .isFile(isFile)
+                .build();
+    }
 }

@@ -2,7 +2,9 @@ package com.kanboo.www.domain.entity.board;
 
 import com.kanboo.www.domain.entity.board.idclass.ProjectBoardId;
 import com.kanboo.www.domain.entity.project.Project;
+import com.kanboo.www.dto.board.ProjectBoardDTO;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -14,6 +16,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Table(name = "project_board")
 @IdClass(ProjectBoardId.class)
+@Builder
 public class ProjectBoard {
 
     @Id
@@ -25,4 +28,11 @@ public class ProjectBoard {
     @ManyToOne
     @JoinColumn(name = "prjct_idx")
     private Project project;
+
+    public ProjectBoardDTO entityToDto() {
+        return ProjectBoardDTO.builder()
+                .board(board.entityToDto())
+                .project(project.entityToDto())
+                .build();
+    }
 }
