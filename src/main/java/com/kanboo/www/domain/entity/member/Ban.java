@@ -21,7 +21,7 @@ public class Ban {
     @Column(name = "ban_idx")
     private Long idx;
 
-    @ManyToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "mem_idx")
     private Member member;
 

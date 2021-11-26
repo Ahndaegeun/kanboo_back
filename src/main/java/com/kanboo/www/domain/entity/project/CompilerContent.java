@@ -20,7 +20,7 @@ public class CompilerContent {
     @Column(name = "com_file_idx")
     private Long idx;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "com_idx")
     private Compiler compiler;
 

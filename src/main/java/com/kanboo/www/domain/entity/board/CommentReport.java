@@ -1,5 +1,6 @@
 package com.kanboo.www.domain.entity.board;
 
+import com.kanboo.www.domain.entity.member.Member;
 import com.kanboo.www.dto.board.CommentReportDTO;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -20,9 +21,13 @@ public class CommentReport {
     @Column(name = "answer_report_idx")
     private Long idx;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "answer_idx")
     private Comment comment;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "mem_idx")
+    private Member member;
 
     @Column(name = "answer_report_resn")
     private String reasonOfDelete;
@@ -30,6 +35,7 @@ public class CommentReport {
     public CommentReportDTO entityToDto() {
         return CommentReportDTO.builder()
                 .idx(idx)
+                .member(member.entityToDto())
                 .comment(comment.entityToDto())
                 .reasonOfDelete(reasonOfDelete)
                 .build();

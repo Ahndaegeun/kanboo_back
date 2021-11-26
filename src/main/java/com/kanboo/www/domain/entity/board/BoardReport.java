@@ -1,5 +1,6 @@
 package com.kanboo.www.domain.entity.board;
 
+import com.kanboo.www.domain.entity.member.Member;
 import com.kanboo.www.dto.board.BoardReportDTO;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -20,9 +21,13 @@ public class BoardReport {
     @Column(name = "board_report_idx")
     private Long idx;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "board_idx")
     private Board board;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "mem_idx")
+    private Member member;
 
     @Column(name = "board_report_resn")
     private String reasonOfReport;
@@ -31,6 +36,7 @@ public class BoardReport {
         return BoardReportDTO.builder()
                 .idx(idx)
                 .board(board.entityToDto())
+                .member(member.entityToDto())
                 .reasonOfReport(reasonOfReport)
                 .build();
     }

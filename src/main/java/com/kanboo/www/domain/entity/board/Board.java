@@ -22,7 +22,7 @@ public class Board {
     @Column(name = "board_idx")
     private Long idx;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "mem_idx")
     private Member member;
 
@@ -32,7 +32,7 @@ public class Board {
     @Column(name = "board_date")
     private LocalDateTime writeDate;
 
-    @Column(name = "like_idx")
+    @Column(name = "like_num")
     private int like;
 
     @Column(name = "report_num")

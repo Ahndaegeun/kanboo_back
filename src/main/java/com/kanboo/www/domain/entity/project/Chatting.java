@@ -22,27 +22,19 @@ public class Chatting {
     @Column(name = "chat_idx")
     private Long idx;
 
-    @ManyToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "prjct_idx")
     private Project project;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "mem_idx")
     private Member member;
-
-    @Column(name = "chat_cn")
-    private String content;
-
-    @Column(name = "chat_date")
-    private LocalDateTime chatDate;
 
     public ChattingDTO entityToDto() {
         return ChattingDTO.builder()
                 .idx(idx)
                 .project(project.entityToDto())
                 .member(member.entityToDto())
-                .content(content)
-                .chatDate(chatDate)
                 .build();
     }
 }

@@ -20,7 +20,7 @@ public class DemandContent {
     @Column(name = "demand_cn_idx")
     private Long idx;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "demand_idx")
     private Demand demand;
 

@@ -20,7 +20,7 @@ public class BoardFile {
     @Column(name = "file_idx")
     private Long idx;
 
-    @ManyToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "board_idx")
     private Board board;
 

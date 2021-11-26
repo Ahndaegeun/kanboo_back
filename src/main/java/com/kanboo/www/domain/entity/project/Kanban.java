@@ -20,7 +20,7 @@ public class Kanban {
     @Column(name = "kb_idx")
     private Long idx;
 
-    @ManyToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "prjct_idx")
     private Project project;
 

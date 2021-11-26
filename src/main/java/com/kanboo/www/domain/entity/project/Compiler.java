@@ -20,11 +20,11 @@ public class Compiler {
     @Column(name = "com_idx")
     private Long idx;
 
-    @ManyToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "prjct_idx")
     private Project project;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "com_idx")
     private Compiler compiler;
 

@@ -21,7 +21,7 @@ public class Gantt {
     @Column(name = "gt_idx")
     private Long idx;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "prjct_idx")
     private Project project;
 

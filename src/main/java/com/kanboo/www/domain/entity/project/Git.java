@@ -21,7 +21,7 @@ public class Git {
     private GitId id;
 
     @MapsId("project")
-    @ManyToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "prjct_idx")
     private Project project;
 
