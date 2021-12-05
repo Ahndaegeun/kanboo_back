@@ -19,45 +19,31 @@ import java.time.LocalDateTime;
 public class Board {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "board_idx")
-    private Long idx;
+    private Long boardIdx;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "mem_idx")
     private Member member;
 
-    @Column(name = "board_cn")
-    private String content;
-
-    @Column(name = "board_date")
-    private LocalDateTime writeDate;
-
-    @Column(name = "like_num")
-    private int like;
-
-    @Column(name = "report_num")
-    private int numberOfReport;
-
-    @Column(name = "del_at")
-    private String isDelete;
-
-    @Column(name = "board_category")
-    private String category;
-
-    @Column(name = "file_at")
-    private String isFile;
+    private String boardCn;
+    private LocalDateTime boardDate;
+    private int likeNum;
+    private int reportNum;
+    private String delAt;
+    private String boardCategory;
+    private String fileAt;
 
     public BoardDTO entityToDto() {
         return BoardDTO.builder()
-                .idx(idx)
+                .idx(boardIdx)
                 .member(member.entityToDto())
-                .content(content)
-                .writeDate(writeDate)
-                .like(like)
-                .numberOfReport(numberOfReport)
-                .isDelete(isDelete)
-                .category(category)
-                .isFile(isFile)
+                .content(boardCn)
+                .writeDate(boardDate)
+                .like(likeNum)
+                .numberOfReport(reportNum)
+                .isDelete(delAt)
+                .category(boardCategory)
+                .isFile(fileAt)
                 .build();
     }
 }

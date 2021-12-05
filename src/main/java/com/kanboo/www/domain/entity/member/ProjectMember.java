@@ -29,14 +29,13 @@ public class ProjectMember {
     @JoinColumn(name = "prjct_idx")
     private Project project;
 
-    @Column(name = "prjct_mem_role")
-    private String role;
+    private String prjctMemRole;
 
     public ProjectMemberDTO entityToDto() {
         return ProjectMemberDTO.builder()
                 .member(member.entityToDto())
                 .project(project.entityToDto())
-                .role(role)
+                .role(prjctMemRole)
                 .build();
     }
 }

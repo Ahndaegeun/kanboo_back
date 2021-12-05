@@ -19,44 +19,28 @@ import java.util.List;
 public class Member {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "mem_idx")
-    private Long idx;
+    private Long memIdx;
 
-    @Column(name = "mem_id")
-    private String id;
-
-    @Column(name = "mem_nick")
-    private String nickname;
-
-    @Column(name = "mem_cel_num")
-    private String phoneNumber;
-
-    @Column(name = "mem_token")
-    private String token;
-
-    @Column(name = "mem_tag")
-    private String kTag;
-
-    @Column(name = "mem_img")
-    private String image;
-
-    @Column(name = "mem_author")
-    private String authority;
-
-    @Column(name = "mem_pass")
-    private String password;
+    private String memId;
+    private String memNick;
+    private String memCelNum;
+    private String memToken;
+    private String memTag;
+    private String memImg;
+    private String memAuthor;
+    private String memPass;
 
     public MemberDTO entityToDto() {
         return MemberDTO.builder()
-                .idx(idx)
-                .id(id)
-                .nickname(nickname)
-                .phoneNumber(phoneNumber)
-                .token(token)
-                .kTag(kTag)
-                .image(image)
-                .authority(authority)
-                .password(password)
+                .idx(memIdx)
+                .id(memId)
+                .nickname(memNick)
+                .phoneNumber(memCelNum)
+                .token(memToken)
+                .kTag(memTag)
+                .image(memImg)
+                .authority(memAuthor)
+                .password(memPass)
                 .build();
     }
 }

@@ -18,25 +18,21 @@ import java.time.LocalDateTime;
 public class Ban {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ban_idx")
-    private Long idx;
+    private Long banIdx;
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "mem_idx")
     private Member member;
 
-    @Column(name = "ban_start_date")
-    private LocalDateTime startDate;
-
-    @Column(name = "ban_end_date")
-    private LocalDateTime endDate;
+    private LocalDateTime banStartDate;
+    private LocalDateTime banEndDate;
 
     public BanDTO entityToDto() {
         return BanDTO.builder()
-                .idx(idx)
+                .idx(banIdx)
                 .member(member.entityToDto())
-                .startDate(startDate)
-                .endDate(endDate)
+                .startDate(banStartDate)
+                .endDate(banEndDate)
                 .build();
     }
 }
