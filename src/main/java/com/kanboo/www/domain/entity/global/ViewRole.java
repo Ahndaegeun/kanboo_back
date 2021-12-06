@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "VIEW_ROLE")
+@Table(name = "view_role")
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
