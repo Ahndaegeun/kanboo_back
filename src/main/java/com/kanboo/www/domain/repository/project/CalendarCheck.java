@@ -4,5 +4,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface CalendarCheck extends JpaRepository<CalendarCheck, Long> {
+public interface CalendarCheck extends JpaRepository<com.kanboo.www.domain.entity.project.CalendarCheck, Long> {
 }

@@ -24,7 +24,6 @@ public class ChattingContentDTO {
     public ChattingContent dtoToEntity() {
         return ChattingContent.builder()
                 .chatContentIdx(chatContentIdx)
-                .member(member.dtoToEntity())
                 .chat(chat.dtoToEntity())
                 .chatCn(chatCn)
                 .chatCnDate(chatCnDate)

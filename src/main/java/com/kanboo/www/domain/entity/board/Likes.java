@@ -1,7 +1,7 @@
 package com.kanboo.www.domain.entity.board;
 
 import com.kanboo.www.domain.entity.member.Member;
-import com.kanboo.www.dto.board.LikeDTO;
+import com.kanboo.www.dto.board.LikesDTO;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -13,9 +13,9 @@ import javax.persistence.*;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "like")
+@Table(name = "likes")
 @Builder
-public class Like {
+public class Likes {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long likeIdx;
@@ -28,8 +28,8 @@ public class Like {
     @JoinColumn(name = "mem_idx")
     private Member member;
 
-    public LikeDTO entityToDto() {
-        return LikeDTO.builder()
+    public LikesDTO entityToDto() {
+        return LikesDTO.builder()
                 .likeIdx(likeIdx)
                 .board(board.entityToDto())
                 .member(member.entityToDto())
