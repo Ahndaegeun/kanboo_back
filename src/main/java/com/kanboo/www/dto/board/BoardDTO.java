@@ -2,6 +2,7 @@ package com.kanboo.www.dto.board;
 
 import com.kanboo.www.domain.entity.board.Board;
 import com.kanboo.www.domain.entity.member.Member;
+import com.kanboo.www.dto.global.CodeDetailDto;
 import com.kanboo.www.dto.member.MemberDTO;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -24,7 +25,7 @@ public class BoardDTO {
     private int likeNum;
     private int reportNum;
     private String delAt;
-    private String boardCategory;
+    private CodeDetailDto codeDetail;
     private String fileAt;
 
     public Board dtoToEntity() {
@@ -36,7 +37,7 @@ public class BoardDTO {
                 .likeNum(likeNum)
                 .reportNum(reportNum)
                 .delAt(delAt)
-                .boardCategory(boardCategory)
+                .codeDetail(codeDetail.dtoToEntity())
                 .fileAt(fileAt)
                 .build();
     }

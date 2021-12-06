@@ -1,5 +1,6 @@
 package com.kanboo.www.domain.entity.board;
 
+import com.kanboo.www.domain.entity.global.CodeDetail;
 import com.kanboo.www.domain.entity.member.Member;
 import com.kanboo.www.dto.board.BoardDTO;
 import lombok.AllArgsConstructor;
@@ -30,7 +31,11 @@ public class Board {
     private int likeNum;
     private int reportNum;
     private String delAt;
-    private String boardCategory;
+
+    @OneToOne
+    @JoinColumn(name = "code_detail_idx")
+    private CodeDetail codeDetail;
+
     private String fileAt;
 
     public BoardDTO entityToDto() {
@@ -42,7 +47,7 @@ public class Board {
                 .likeNum(likeNum)
                 .reportNum(reportNum)
                 .delAt(delAt)
-                .boardCategory(boardCategory)
+                .codeDetail(codeDetail.entityToDto())
                 .fileAt(fileAt)
                 .build();
     }

@@ -1,5 +1,6 @@
 package com.kanboo.www.domain.entity.project;
 
+import com.kanboo.www.domain.entity.global.CodeDetail;
 import com.kanboo.www.domain.entity.member.Member;
 import com.kanboo.www.dto.project.CalendarDTO;
 import lombok.AllArgsConstructor;
@@ -32,7 +33,11 @@ public class Calendar {
     private LocalDateTime calStartDate;
     private LocalDateTime calEndDate;
     private String calColor;
-    private String calSe;
+
+    @OneToOne
+    @JoinColumn(name = "code_detail_idx")
+    private CodeDetail codeDetail;
+
     private String calCn;
     private String calTitle;
     private String calDelAt;
@@ -46,7 +51,7 @@ public class Calendar {
                 .calStartDate(calStartDate)
                 .calEndDate(calEndDate)
                 .calColor(calColor)
-                .calSe(calSe)
+                .codeDetail(codeDetail.entityToDto())
                 .calCn(calCn)
                 .calTitle(calTitle)
                 .calDelAt(calDelAt)

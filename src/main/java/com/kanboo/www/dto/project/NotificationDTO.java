@@ -1,8 +1,10 @@
 package com.kanboo.www.dto.project;
 
+import com.kanboo.www.domain.entity.global.CodeDetail;
 import com.kanboo.www.domain.entity.member.Member;
 import com.kanboo.www.domain.entity.project.Notification;
 import com.kanboo.www.domain.entity.project.Project;
+import com.kanboo.www.dto.global.CodeDetailDto;
 import com.kanboo.www.dto.member.MemberDTO;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -26,7 +28,7 @@ public class NotificationDTO {
     private String ntcnCn;
     private String ntcnAt;
     private LocalDateTime ntcnDate;
-    private String ntcnSe;
+    private CodeDetailDto codeDetail;
 
     public Notification dtoToEntity() {
         return Notification.builder()
@@ -36,7 +38,7 @@ public class NotificationDTO {
                 .ntcnCn(ntcnCn)
                 .ntcnAt(ntcnAt)
                 .ntcnDate(ntcnDate)
-                .ntcnSe(ntcnSe)
+                .codeDetail(codeDetail.dtoToEntity())
                 .build();
     }
 }
