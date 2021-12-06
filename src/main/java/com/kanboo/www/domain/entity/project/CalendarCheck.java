@@ -18,8 +18,7 @@ import javax.persistence.*;
 public class CalendarCheck {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "cal_chk_idx")
-    private Long idx;
+    private Long calChkIdx;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "cal_idx")
@@ -31,7 +30,7 @@ public class CalendarCheck {
 
     public CalendarCheckDTO entityToDto() {
         return CalendarCheckDTO.builder()
-                .idx(idx)
+                .calChkIdx(calChkIdx)
                 .calendar(calendar.entityToDto())
                 .member(member.entityToDto())
                 .build();

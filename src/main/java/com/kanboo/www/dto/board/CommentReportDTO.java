@@ -18,17 +18,17 @@ import javax.persistence.ManyToOne;
 @AllArgsConstructor
 public class CommentReportDTO {
 
-    private Long idx;
+    private Long answerReportIdx;
     private CommentDTO comment;
     private MemberDTO member;
-    private String reasonOfDelete;
+    private String answerReportResn;
 
     public CommentReport dtoToEntity() {
         return CommentReport.builder()
-                .idx(idx)
+                .answerReportIdx(answerReportIdx)
                 .comment(comment.dtoToEntity())
                 .member(member.dtoToEntity())
-                .reasonOfDelete(reasonOfDelete)
+                .answerReportResn(answerReportResn)
                 .build();
     }
 }

@@ -17,21 +17,25 @@ import javax.persistence.*;
 public class BoardFile {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "file_idx")
-    private Long idx;
+    private Long fileIdx;
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "board_idx")
     private Board board;
 
-    @Column(name = "file_name")
-    private String name;
+    private String fileName;
+    private String filePath;
+    private String fileSize;
+    private String extensionName;
 
     public BoardFileDTO entityToDto() {
         return BoardFileDTO.builder()
-                .idx(idx)
+                .fileIdx(fileIdx)
                 .board(board.entityToDto())
-                .name(name)
+                .fileName(fileName)
+                .filePath(filePath)
+                .fileSize(fileSize)
+                .extensionName(extensionName)
                 .build();
     }
 }

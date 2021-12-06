@@ -18,17 +18,17 @@ import javax.persistence.ManyToOne;
 @AllArgsConstructor
 public class BoardReportDTO {
 
-    private Long idx;
+    private Long boardReportIdx;
     private BoardDTO board;
     private MemberDTO member;
-    private String reasonOfReport;
+    private String boardReportResn;
 
     public BoardReport dtoToEntity() {
         return BoardReport.builder()
-                .idx(idx)
+                .boardReportIdx(boardReportIdx)
                 .board(board.dtoToEntity())
                 .member(member.dtoToEntity())
-                .reasonOfReport(reasonOfReport)
+                .boardReportResn(boardReportResn)
                 .build();
     }
 }

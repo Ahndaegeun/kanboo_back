@@ -1,15 +1,10 @@
 package com.kanboo.www.dto.project;
 
-import com.kanboo.www.domain.entity.project.Compiler;
-import com.kanboo.www.domain.entity.project.CompilerContent;
+import com.kanboo.www.domain.entity.project.CompilerFile;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import javax.persistence.Column;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 
 @Data
 @Builder
@@ -17,15 +12,15 @@ import javax.persistence.ManyToOne;
 @AllArgsConstructor
 public class CompilerContentDTO {
 
-    private Long idx;
+    private Long comFileIdx;
     private CompilerDTO compiler;
-    private String content;
+    private String comFileCn;
 
-    public CompilerContent dtoToEntity() {
-        return CompilerContent.builder()
-                .idx(idx)
+    public CompilerFile dtoToEntity() {
+        return CompilerFile.builder()
+                .comFileIdx(comFileIdx)
                 .compiler(compiler.dtoToEntity())
-                .content(content)
+                .comFileCn(comFileCn)
                 .build();
     }
 }

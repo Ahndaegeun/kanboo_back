@@ -18,13 +18,13 @@ import javax.persistence.ManyToOne;
 @AllArgsConstructor
 public class LikeDTO {
 
-    private Long idx;
+    private Long likeIdx;
     private BoardDTO board;
     private MemberDTO member;
 
     public Like dtoToEntity() {
         return Like.builder()
-                .idx(idx)
+                .likeIdx(likeIdx)
                 .board(board.dtoToEntity())
                 .member(member.dtoToEntity())
                 .build();

@@ -1,27 +1,25 @@
 package com.kanboo.www.dto.project;
 
-import com.kanboo.www.domain.entity.project.Git;
-import com.kanboo.www.domain.entity.project.Project;
+import com.kanboo.www.domain.entity.project.Chat;
+import com.kanboo.www.dto.member.MemberDTO;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class GitDTO {
+public class ChatDTO {
 
     private ProjectDTO project;
-    private String gitRepo;
+    private MemberDTO member;
 
-    public Git dtoToEntity() {
-        return Git.builder()
+    public Chat dtoToEntity() {
+        return Chat.builder()
                 .project(project.dtoToEntity())
-                .gitRepo(gitRepo)
+                .member(member.dtoToEntity())
                 .build();
     }
 }

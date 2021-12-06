@@ -19,8 +19,7 @@ import java.time.LocalDateTime;
 public class ChattingContent {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "chat_content_idx")
-    private Long idx;
+    private Long chatContentIdx;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "mem_idx")
@@ -28,21 +27,18 @@ public class ChattingContent {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "chat_idx")
-    private Chatting chatting;
+    private Chat chat;
 
-    @Column(name = "chat_cn")
-    private String content;
-
-    @Column(name = "chat_cn_date")
-    private LocalDateTime chatDate;
+    private String chatCn;
+    private LocalDateTime chatCnDate;
 
     public ChattingContentDTO entityToDto() {
         return ChattingContentDTO.builder()
-                .idx(idx)
+                .chatContentIdx(chatContentIdx)
                 .member(member.entityToDto())
-                .chatting(chatting.entityToDto())
-                .content(content)
-                .chatDate(chatDate)
+                .chat(chat.entityToDto())
+                .chatCn(chatCn)
+                .chatCnDate(chatCnDate)
                 .build();
     }
 }

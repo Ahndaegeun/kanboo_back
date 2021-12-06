@@ -1,6 +1,7 @@
 package com.kanboo.www.dto.member;
 
 import com.kanboo.www.domain.entity.member.Member;
+import com.kanboo.www.dto.global.RoleDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -14,27 +15,27 @@ import javax.persistence.Column;
 @AllArgsConstructor
 public class MemberDTO {
 
-    private Long idx;
-    private String id;
-    private String nickname;
-    private String phoneNumber;
-    private String token;
-    private String kTag;
-    private String image;
-    private String authority;
-    private String password;
+    private Long memIdx;
+    private String memId;
+    private String memNick;
+    private String memCelNum;
+    private String memToken;
+    private String memTag;
+    private String memImg;
+    private String memPass;
+    private RoleDto role;
 
     public Member dtoToEntity() {
         return Member.builder()
-                .idx(idx)
-                .id(id)
-                .nickname(nickname)
-                .phoneNumber(phoneNumber)
-                .token(token)
-                .kTag(kTag)
-                .image(image)
-                .authority(authority)
-                .password(password)
+                .memIdx(memIdx)
+                .memId(memId)
+                .memNick(memNick)
+                .memCelNum(memCelNum)
+                .memToken(memToken)
+                .memTag(memTag)
+                .memImg(memImg)
+                .memPass(memPass)
+                .role(role.dtoToEntity())
                 .build();
     }
 }

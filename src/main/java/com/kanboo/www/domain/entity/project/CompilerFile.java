@@ -14,24 +14,22 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Table(name = "compiler_file")
 @Builder
-public class CompilerContent {
+public class CompilerFile {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "com_file_idx")
-    private Long idx;
+    private Long comFileIdx;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "com_idx")
     private Compiler compiler;
 
-    @Column(name = "com_file_cn")
-    private String content;
+    private String comFileCn;
 
     public CompilerContentDTO entityToDto() {
         return CompilerContentDTO.builder()
-                .idx(idx)
+                .comFileIdx(comFileIdx)
                 .compiler(compiler.entityToDto())
-                .content(content)
+                .comFileCn(comFileCn)
                 .build();
     }
 }

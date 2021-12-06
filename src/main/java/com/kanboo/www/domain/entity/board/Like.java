@@ -18,8 +18,7 @@ import javax.persistence.*;
 public class Like {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "like_idx")
-    private Long idx;
+    private Long likeIdx;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "board_idx")
@@ -31,7 +30,7 @@ public class Like {
 
     public LikeDTO entityToDto() {
         return LikeDTO.builder()
-                .idx(idx)
+                .likeIdx(likeIdx)
                 .board(board.entityToDto())
                 .member(member.entityToDto())
                 .build();

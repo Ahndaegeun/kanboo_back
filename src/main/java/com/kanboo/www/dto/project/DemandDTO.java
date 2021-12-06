@@ -18,15 +18,15 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class DemandDTO {
 
-    private Long idx;
+    private Long demandIdx;
     private ProjectDTO project;
-    private LocalDateTime revisionDate;
+    private LocalDateTime demandReviseDate;
 
     public Demand dtoToEntity() {
         return Demand.builder()
-                .idx(idx)
+                .demandIdx(demandIdx)
                 .project(project.dtoToEntity())
-                .revisionDate(revisionDate)
+                .demandReviseDate(demandReviseDate)
                 .build();
     }
 

@@ -18,17 +18,17 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class BanDTO {
 
-    private Long idx;
+    private Long banIdx;
     private MemberDTO member;
-    private LocalDateTime startDate;
-    private LocalDateTime endDate;
+    private LocalDateTime banStartDate;
+    private LocalDateTime banEndDate;
 
     public Ban dtoToEntity() {
         return Ban.builder()
-                .idx(idx)
+                .banIdx(banIdx)
                 .member(member.dtoToEntity())
-                .startDate(startDate)
-                .endDate(endDate)
+                .banStartDate(banStartDate)
+                .banEndDate(banEndDate)
                 .build();
     }
 }

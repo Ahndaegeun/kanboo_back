@@ -20,31 +20,31 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class CalendarDTO {
 
-    private Long idx;
+    private Long calIdx;
     private ProjectDTO project;
     private MemberDTO member;
-    private LocalDateTime startDate;
-    private LocalDateTime endDate;
-    private String color;
-    private String classification;
-    private String content;
-    private String title;
-    private String isDelete;
-    private String reasonOfDelete;
+    private LocalDateTime calStartDate;
+    private LocalDateTime calEndDate;
+    private String calColor;
+    private String calSe;
+    private String calCn;
+    private String calTitle;
+    private String calDelAt;
+    private String calDelResn;
 
     public Calendar dtoToEntity() {
         return Calendar.builder()
-                .idx(idx)
+                .calIdx(calIdx)
                 .project(project.dtoToEntity())
                 .member(member.dtoToEntity())
-                .startDate(startDate)
-                .endDate(endDate)
-                .color(color)
-                .classification(classification)
-                .content(content)
-                .title(title)
-                .isDelete(isDelete)
-                .reasonOfDelete(reasonOfDelete)
+                .calStartDate(calStartDate)
+                .calEndDate(calEndDate)
+                .calColor(calColor)
+                .calSe(calSe)
+                .calCn(calCn)
+                .calTitle(calTitle)
+                .calDelAt(calDelAt)
+                .calDelResn(calDelResn)
                 .build();
     }
 }

@@ -35,15 +35,15 @@ public class Board {
 
     public BoardDTO entityToDto() {
         return BoardDTO.builder()
-                .idx(boardIdx)
+                .boardIdx(boardIdx)
                 .member(member.entityToDto())
-                .content(boardCn)
-                .writeDate(boardDate)
-                .like(likeNum)
-                .numberOfReport(reportNum)
-                .isDelete(delAt)
-                .category(boardCategory)
-                .isFile(fileAt)
+                .boardCn(boardCn)
+                .boardDate(boardDate)
+                .likeNum(likeNum)
+                .reportNum(reportNum)
+                .delAt(delAt)
+                .boardCategory(boardCategory)
+                .fileAt(fileAt)
                 .build();
     }
 }

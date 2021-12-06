@@ -19,8 +19,7 @@ import java.time.LocalDateTime;
 public class Notification {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ntcn_idx")
-    private Long idx;
+    private Long ntcnIdx;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "mem_idx")
@@ -30,27 +29,20 @@ public class Notification {
     @JoinColumn(name = "prjct_idx")
     private Project project;
 
-    @Column(name = "ntcn_cn")
-    private String content;
-
-    @Column(name = "ntcn_at")
-    private String isRead;
-
-    @Column(name = "ntcn_date")
-    private LocalDateTime notificationDate;
-
-    @Column(name = "ntcn_se")
-    private String classification;
+    private String ntcnCn;
+    private String ntcnAt;
+    private LocalDateTime ntcnDate;
+    private String ntcnSe;
 
     public NotificationDTO entityToDto() {
         return NotificationDTO.builder()
-                .idx(idx)
+                .ntcnIdx(ntcnIdx)
                 .member(member.entityToDto())
                 .project(project.entityToDto())
-                .content(content)
-                .isRead(isRead)
-                .notificationDate(notificationDate)
-                .classification(classification)
+                .ntcnCn(ntcnCn)
+                .ntcnAt(ntcnAt)
+                .ntcnDate(ntcnDate)
+                .ntcnSe(ntcnSe)
                 .build();
     }
 }

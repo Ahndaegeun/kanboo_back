@@ -19,8 +19,7 @@ import java.time.LocalDateTime;
 public class Comment {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "answer_idx")
-    private Long idx;
+    private Long answerIdx;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "board_idx")
@@ -30,27 +29,20 @@ public class Comment {
     @JoinColumn(name = "mem_idx")
     private Member member;
 
-    @Column(name = "answer_cn")
-    private String content;
-
-    @Column(name = "answer_report_num")
-    private int numberOfReport;
-
-    @Column(name = "answer_date")
-    private LocalDateTime writeDate;
-
-    @Column(name = "answer_del_at")
-    private String isDelete;
+    private String answerCn;
+    private int answerReportNum;
+    private LocalDateTime answerDate;
+    private String answerDelAt;
 
     public CommentDTO entityToDto() {
         return CommentDTO.builder()
-                .idx(idx)
+                .answerIdx(answerIdx)
                 .board(board.entityToDto())
                 .member(member.entityToDto())
-                .content(content)
-                .numberOfReport(numberOfReport)
-                .writeDate(writeDate)
-                .isDelete(isDelete)
+                .answerCn(answerCn)
+                .answerReportNum(answerReportNum)
+                .answerDate(answerDate)
+                .answerDelAt(answerDelAt)
                 .build();
     }
 }

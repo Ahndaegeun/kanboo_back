@@ -1,7 +1,5 @@
 package com.kanboo.www.dto.project;
 
-import com.kanboo.www.domain.entity.member.Member;
-import com.kanboo.www.domain.entity.project.Chatting;
 import com.kanboo.www.domain.entity.project.ChattingContent;
 import com.kanboo.www.dto.member.MemberDTO;
 import lombok.AllArgsConstructor;
@@ -17,19 +15,19 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class ChattingContentDTO {
 
-    private Long idx;
+    private Long chatContentIdx;
     private MemberDTO member;
-    private ChattingDTO chatting;
-    private String content;
-    private LocalDateTime chatDate;
+    private ChatDTO chat;
+    private String chatCn;
+    private LocalDateTime chatCnDate;
 
     public ChattingContent dtoToEntity() {
         return ChattingContent.builder()
-                .idx(idx)
+                .chatContentIdx(chatContentIdx)
                 .member(member.dtoToEntity())
-                .chatting(chatting.dtoToEntity())
-                .content(content)
-                .chatDate(chatDate)
+                .chat(chat.dtoToEntity())
+                .chatCn(chatCn)
+                .chatCnDate(chatCnDate)
                 .build();
     }
 }

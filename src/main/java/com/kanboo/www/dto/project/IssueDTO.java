@@ -20,21 +20,21 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class IssueDTO {
 
-    private Long idx;
+    private Long issueIdx;
     private ProjectDTO project;
     private MemberDTO member;
-    private String content;
+    private String issueCn;
     private LocalDateTime issueDate;
-    private String state;
+    private String issueState;
 
     public Issue dtoToEntity() {
         return Issue.builder()
-                .idx(idx)
+                .issueIdx(issueIdx)
                 .project(project.dtoToEntity())
                 .member(member.dtoToEntity())
-                .content(content)
+                .issueCn(issueCn)
                 .issueDate(issueDate)
-                .state(state)
+                .issueState(issueState)
                 .build();
     }
 }

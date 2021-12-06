@@ -17,27 +17,27 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class BoardDTO {
 
-    private Long idx;
+    private Long boardIdx;
     private MemberDTO member;
-    private String content;
-    private LocalDateTime writeDate;
-    private int like;
-    private int numberOfReport;
-    private String isDelete;
-    private String category;
-    private String isFile;
+    private String boardCn;
+    private LocalDateTime boardDate;
+    private int likeNum;
+    private int reportNum;
+    private String delAt;
+    private String boardCategory;
+    private String fileAt;
 
     public Board dtoToEntity() {
         return Board.builder()
-                .idx(idx)
+                .boardIdx(boardIdx)
                 .member(member.dtoToEntity())
-                .content(content)
-                .writeDate(writeDate)
-                .like(like)
-                .numberOfReport(numberOfReport)
-                .isDelete(isDelete)
-                .category(category)
-                .isFile(isFile)
+                .boardCn(boardCn)
+                .boardDate(boardDate)
+                .likeNum(likeNum)
+                .reportNum(reportNum)
+                .delAt(delAt)
+                .boardCategory(boardCategory)
+                .fileAt(fileAt)
                 .build();
     }
 }

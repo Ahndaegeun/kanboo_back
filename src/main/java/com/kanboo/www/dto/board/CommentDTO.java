@@ -20,23 +20,23 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class CommentDTO {
 
-    private Long idx;
+    private Long answerIdx;
     private BoardDTO board;
     private MemberDTO member;
-    private String content;
-    private int numberOfReport;
-    private LocalDateTime writeDate;
-    private String isDelete;
+    private String answerCn;
+    private int answerReportNum;
+    private LocalDateTime answerDate;
+    private String answerDelAt;
 
     public Comment dtoToEntity() {
         return Comment.builder()
-                .idx(idx)
+                .answerIdx(answerIdx)
                 .board(board.dtoToEntity())
                 .member(member.dtoToEntity())
-                .content(content)
-                .numberOfReport(numberOfReport)
-                .writeDate(writeDate)
-                .isDelete(isDelete)
+                .answerCn(answerCn)
+                .answerReportNum(answerReportNum)
+                .answerDate(answerDate)
+                .answerDelAt(answerDelAt)
                 .build();
     }
 }

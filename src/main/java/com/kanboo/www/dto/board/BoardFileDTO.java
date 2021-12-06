@@ -17,15 +17,21 @@ import javax.persistence.ManyToOne;
 @AllArgsConstructor
 public class BoardFileDTO {
 
-    private Long idx;
+    private Long fileIdx;
     private BoardDTO board;
-    private String name;
+    private String fileName;
+    private String filePath;
+    private String fileSize;
+    private String extensionName;
 
     public BoardFile dtoToEntity() {
         return BoardFile.builder()
-                .idx(idx)
+                .fileIdx(fileIdx)
                 .board(board.dtoToEntity())
-                .name(name)
+                .fileName(fileName)
+                .filePath(filePath)
+                .fileSize(fileSize)
+                .extensionName(extensionName)
                 .build();
     }
 }

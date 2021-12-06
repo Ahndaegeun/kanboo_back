@@ -16,12 +16,12 @@ import javax.persistence.ManyToOne;
 @AllArgsConstructor
 public class KanbanDTO {
 
-    private Long idx;
+    private Long kbIdx;
     private ProjectDTO project;
 
     public Kanban dtoToEntity() {
         return Kanban.builder()
-                .idx(idx)
+                .kbIdx(kbIdx)
                 .project(project.dtoToEntity())
                 .build();
     }

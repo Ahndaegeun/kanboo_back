@@ -19,8 +19,7 @@ import java.time.LocalDateTime;
 public class Calendar {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "cal_idx")
-    private Long idx;
+    private Long calIdx;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "prjct_idx")
@@ -30,43 +29,28 @@ public class Calendar {
     @JoinColumn(name = "mem_idx")
     private Member member;
 
-    @Column(name = "cal_start_date")
-    private LocalDateTime startDate;
-
-    @Column(name = "cal_end_date")
-    private LocalDateTime endDate;
-
-    @Column(name = "cal_color")
-    private String color;
-
-    @Column(name = "cal_se")
-    private String classification;
-
-    @Column(name = "cal_cn")
-    private String content;
-
-    @Column(name = "cal_title")
-    private String title;
-
-    @Column(name = "cal_del_at")
-    private String isDelete;
-
-    @Column(name = "cal_del_resn")
-    private String reasonOfDelete;
+    private LocalDateTime calStartDate;
+    private LocalDateTime calEndDate;
+    private String calColor;
+    private String calSe;
+    private String calCn;
+    private String calTitle;
+    private String calDelAt;
+    private String calDelResn;
 
     public CalendarDTO entityToDto() {
         return CalendarDTO.builder()
-                .idx(idx)
+                .calIdx(calIdx)
                 .project(project.entityToDto())
                 .member(member.entityToDto())
-                .startDate(startDate)
-                .endDate(endDate)
-                .color(color)
-                .classification(classification)
-                .content(content)
-                .title(title)
-                .isDelete(isDelete)
-                .reasonOfDelete(reasonOfDelete)
+                .calStartDate(calStartDate)
+                .calEndDate(calEndDate)
+                .calColor(calColor)
+                .calSe(calSe)
+                .calCn(calCn)
+                .calTitle(calTitle)
+                .calDelAt(calDelAt)
+                .calDelResn(calDelResn)
                 .build();
     }
 }

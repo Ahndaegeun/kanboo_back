@@ -20,23 +20,23 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class NotificationDTO {
 
-    private Long idx;
+    private Long ntcnIdx;
     private MemberDTO member;
     private ProjectDTO project;
-    private String content;
-    private String isRead;
-    private LocalDateTime notificationDate;
-    private String classification;
+    private String ntcnCn;
+    private String ntcnAt;
+    private LocalDateTime ntcnDate;
+    private String ntcnSe;
 
     public Notification dtoToEntity() {
         return Notification.builder()
-                .idx(idx)
+                .ntcnIdx(ntcnIdx)
                 .member(member.dtoToEntity())
                 .project(project.dtoToEntity())
-                .content(content)
-                .isRead(isRead)
-                .notificationDate(notificationDate)
-                .classification(classification)
+                .ntcnCn(ntcnCn)
+                .ntcnAt(ntcnAt)
+                .ntcnDate(ntcnDate)
+                .ntcnSe(ntcnSe)
                 .build();
     }
 }

@@ -18,27 +18,27 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class GanttDTO {
 
-    private Long idx;
+    private Long gtIdx;
     private ProjectDTO project;
-    private String state;
-    private String priority;
-    private int progress;
-    private LocalDateTime startDate;
-    private LocalDateTime endDate;
-    private  String explanation;
-    private String title;
+    private String gtState;
+    private String gtPriority;
+    private int gtProgress;
+    private LocalDateTime gtStartDate;
+    private LocalDateTime gtEndDate;
+    private  String gtExplanation;
+    private String gtTitle;
 
     public Gantt dtoToEntity() {
         return Gantt.builder()
-                .idx(idx)
+                .gtIdx(gtIdx)
                 .project(project.dtoToEntity())
-                .state(state)
-                .priority(priority)
-                .progress(progress)
-                .startDate(startDate)
-                .endDate(endDate)
-                .explanation(explanation)
-                .title(title)
+                .gtState(gtState)
+                .gtPriority(gtPriority)
+                .gtProgress(gtProgress)
+                .gtStartDate(gtStartDate)
+                .gtEndDate(gtEndDate)
+                .gtExplanation(gtExplanation)
+                .gtTitle(gtTitle)
                 .build();
     }
 }

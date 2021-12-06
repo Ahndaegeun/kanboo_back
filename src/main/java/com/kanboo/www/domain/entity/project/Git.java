@@ -25,13 +25,12 @@ public class Git {
     @JoinColumn(name = "prjct_idx")
     private Project project;
 
-    @Column(name = "git_repo")
-    private String repoAddress;
+    private String gitRepo;
 
     public GitDTO entityToDto() {
         return GitDTO.builder()
                 .project(project.entityToDto())
-                .repoAddress(repoAddress)
+                .gitRepo(gitRepo)
                 .build();
     }
 }

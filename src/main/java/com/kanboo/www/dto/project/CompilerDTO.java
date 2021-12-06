@@ -18,19 +18,19 @@ import javax.persistence.OneToOne;
 @AllArgsConstructor
 public class CompilerDTO {
 
-    private Long idx;
+    private Long comIdx;
     private ProjectDTO project;
     private CompilerDTO compiler;
-    private String classification;
-    private String name;
+    private String comSe;
+    private String comNm;
 
     public Compiler dtoToEntity() {
         return Compiler.builder()
-                .idx(idx)
+                .comIdx(comIdx)
                 .project(project.dtoToEntity())
                 .compiler(compiler.dtoToEntity())
-                .classification(classification)
-                .name(name)
+                .comSe(comSe)
+                .comNm(comNm)
                 .build();
     }
 }

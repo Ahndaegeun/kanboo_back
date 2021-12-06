@@ -18,8 +18,7 @@ import javax.persistence.*;
 public class CommentReport {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "answer_report_idx")
-    private Long idx;
+    private Long answerReportIdx;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "answer_idx")
@@ -29,15 +28,14 @@ public class CommentReport {
     @JoinColumn(name = "mem_idx")
     private Member member;
 
-    @Column(name = "answer_report_resn")
-    private String reasonOfDelete;
+    private String answerReportResn;
 
     public CommentReportDTO entityToDto() {
         return CommentReportDTO.builder()
-                .idx(idx)
-                .member(member.entityToDto())
+                .answerReportIdx(answerReportIdx)
                 .comment(comment.entityToDto())
-                .reasonOfDelete(reasonOfDelete)
+                .member(member.entityToDto())
+                .answerReportResn(answerReportResn)
                 .build();
     }
 }

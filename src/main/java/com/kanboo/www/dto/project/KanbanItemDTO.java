@@ -20,25 +20,25 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class KanbanItemDTO {
 
-    private Long idx;
+    private Long kbItmIdx;
     private KanbanDTO kanban;
     private MemberDTO member;
-    private String content;
-    private String itemNumber;
-    private LocalDateTime kanbanDate;
-    private String badge;
-    private String color;
+    private String kbCn;
+    private String kbItmNum;
+    private LocalDateTime kbDate;
+    private String kbBadge;
+    private String kbColor;
 
     public KanbanItem dtoToEntity() {
         return KanbanItem.builder()
-                .idx(idx)
+                .kbItmIdx(kbItmIdx)
                 .kanban(kanban.dtoToEntity())
                 .member(member.dtoToEntity())
-                .content(content)
-                .itemNumber(itemNumber)
-                .kanbanDate(kanbanDate)
-                .badge(badge)
-                .color(color)
+                .kbCn(kbCn)
+                .kbItmNum(kbItmNum)
+                .kbDate(kbDate)
+                .kbBadge(kbBadge)
+                .kbColor(kbColor)
                 .build();
     }
 }

@@ -35,7 +35,7 @@ public class ProjectMember {
         return ProjectMemberDTO.builder()
                 .member(member.entityToDto())
                 .project(project.entityToDto())
-                .role(prjctMemRole)
+                .prjctMemRole(prjctMemRole)
                 .build();
     }
 }

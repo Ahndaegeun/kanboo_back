@@ -17,27 +17,27 @@ import javax.persistence.ManyToOne;
 @AllArgsConstructor
 public class DemandContentDTO {
 
-    private Long idx;
+    private Long demandCnIdx;
     private DemandDTO demand;
-    private String demandNumber;
-    private String classification;
-    private String id;
-    private String name;
-    private String detail;
-    private String request;
-    private String remark;
+    private String demandCnNum;
+    private String demandCnSe;
+    private String demandCnId;
+    private String demandCnNm;
+    private String demandCnDetail;
+    private String demandCnRequstNm;
+    private String demandCnRm;
 
     public DemandContent dtoToEntity() {
         return DemandContent.builder()
-                .idx(idx)
+                .demandCnIdx(demandCnIdx)
                 .demand(demand.dtoToEntity())
-                .demandNumber(demandNumber)
-                .classification(classification)
-                .id(id)
-                .name(name)
-                .detail(detail)
-                .request(request)
-                .remark(remark)
+                .demandCnNum(demandCnNum)
+                .demandCnSe(demandCnSe)
+                .demandCnId(demandCnId)
+                .demandCnNm(demandCnNm)
+                .demandCnDetail(demandCnDetail)
+                .demandCnRequstNm(demandCnRequstNm)
+                .demandCnRm(demandCnRm)
                 .build();
     }
 }

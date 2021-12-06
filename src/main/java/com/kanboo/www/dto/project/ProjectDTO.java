@@ -14,21 +14,21 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class ProjectDTO {
 
-    private Long idx;
-    private String name;
-    private LocalDateTime startDate;
-    private LocalDateTime endDate;
-    private int progress;
-    private String isDelete;
+    private Long prjctIdx;
+    private String prjctNm;
+    private LocalDateTime prjctStartDate;
+    private LocalDateTime prjctEndDate;
+    private int prjctoProgress;
+    private String prjctDelAt;
 
     public Project dtoToEntity() {
         return Project.builder()
-                .idx(idx)
-                .name(name)
-                .startDate(startDate)
-                .endDate(endDate)
-                .progress(progress)
-                .isDelete(isDelete)
+                .prjctIdx(prjctIdx)
+                .prjctNm(prjctNm)
+                .prjctStartDate(prjctStartDate)
+                .prjctEndDate(prjctEndDate)
+                .prjctoProgress(prjctoProgress)
+                .prjctDelAt(prjctDelAt)
                 .build();
     }
 }

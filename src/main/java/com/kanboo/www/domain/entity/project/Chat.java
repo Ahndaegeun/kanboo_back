@@ -1,14 +1,14 @@
 package com.kanboo.www.domain.entity.project;
 
 import com.kanboo.www.domain.entity.member.Member;
-import com.kanboo.www.dto.project.ChattingDTO;
+import com.kanboo.www.domain.entity.project.idclass.ChatId;
+import com.kanboo.www.dto.project.ChatDTO;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 
 @Entity
 @Getter
@@ -16,23 +16,21 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Table(name = "chat")
 @Builder
-public class Chatting {
+@IdClass(ChatId.class)
+public class Chat {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "chat_idx")
-    private Long idx;
-
+    @Id
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "prjct_idx")
     private Project project;
 
+    @Id
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "mem_idx")
     private Member member;
 
-    public ChattingDTO entityToDto() {
-        return ChattingDTO.builder()
-                .idx(idx)
+    public ChatDTO entityToDto() {
+        return ChatDTO.builder()
                 .project(project.entityToDto())
                 .member(member.entityToDto())
                 .build();

@@ -29,10 +29,10 @@ public class Ban {
 
     public BanDTO entityToDto() {
         return BanDTO.builder()
-                .idx(banIdx)
+                .banIdx(banIdx)
                 .member(member.entityToDto())
-                .startDate(banStartDate)
-                .endDate(banEndDate)
+                .banStartDate(banStartDate)
+                .banEndDate(banEndDate)
                 .build();
     }
 }

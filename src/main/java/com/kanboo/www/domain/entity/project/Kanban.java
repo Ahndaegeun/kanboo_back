@@ -17,8 +17,7 @@ import javax.persistence.*;
 public class Kanban {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "kb_idx")
-    private Long idx;
+    private Long kbIdx;
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "prjct_idx")
@@ -26,7 +25,7 @@ public class Kanban {
 
     public KanbanDTO entityToDto() {
         return KanbanDTO.builder()
-                .idx(idx)
+                .kbIdx(kbIdx)
                 .project(project.entityToDto())
                 .build();
     }

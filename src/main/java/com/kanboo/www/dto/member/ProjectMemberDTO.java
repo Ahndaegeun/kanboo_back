@@ -15,13 +15,13 @@ public class ProjectMemberDTO {
 
     private MemberDTO member;
     private ProjectDTO project;
-    private String role;
+    private String prjctMemRole;
 
     public ProjectMember dtoToEntity() {
         return ProjectMember.builder()
                 .member(member.dtoToEntity())
                 .project(project.dtoToEntity())
-                .role(role)
+                .prjctMemRole(prjctMemRole)
                 .build();
     }
 }

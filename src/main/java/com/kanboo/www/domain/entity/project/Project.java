@@ -19,32 +19,22 @@ import java.util.List;
 public class Project {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "prjct_idx")
-    private Long idx;
+    private Long prjctIdx;
 
-    @Column(name = "prjct_nm")
-    private String name;
-
-    @Column(name = "prjct_start_date")
-    private LocalDateTime startDate;
-
-    @Column(name = "prjct_end_date")
-    private LocalDateTime endDate;
-
-    @Column(name = "prjct_progress")
-    private int progress;
-
-    @Column(name = "prjct_del_at")
-    private String isDelete;
+    private String prjctNm;
+    private LocalDateTime prjctStartDate;
+    private LocalDateTime prjctEndDate;
+    private int prjctoProgress;
+    private String prjctDelAt;
 
     public ProjectDTO entityToDto() {
         return ProjectDTO.builder()
-                .idx(idx)
-                .name(name)
-                .startDate(startDate)
-                .endDate(endDate)
-                .progress(progress)
-                .isDelete(isDelete)
+                .prjctIdx(prjctIdx)
+                .prjctNm(prjctNm)
+                .prjctStartDate(prjctStartDate)
+                .prjctEndDate(prjctEndDate)
+                .prjctoProgress(prjctoProgress)
+                .prjctDelAt(prjctDelAt)
                 .build();
     }
 }

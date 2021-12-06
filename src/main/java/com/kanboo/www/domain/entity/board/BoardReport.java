@@ -18,8 +18,7 @@ import javax.persistence.*;
 public class BoardReport {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "board_report_idx")
-    private Long idx;
+    private Long boardReportIdx;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "board_idx")
@@ -29,15 +28,14 @@ public class BoardReport {
     @JoinColumn(name = "mem_idx")
     private Member member;
 
-    @Column(name = "board_report_resn")
-    private String reasonOfReport;
+    private String boardReportResn;
 
     public BoardReportDTO entityToDto() {
         return BoardReportDTO.builder()
-                .idx(idx)
+                .boardReportIdx(boardReportIdx)
                 .board(board.entityToDto())
                 .member(member.entityToDto())
-                .reasonOfReport(reasonOfReport)
+                .boardReportResn(boardReportResn)
                 .build();
     }
 }

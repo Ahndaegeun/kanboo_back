@@ -18,21 +18,20 @@ import java.time.LocalDateTime;
 public class Demand {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "demand_idx")
-    private Long idx;
+    private Long demandIdx;
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "prjct_idx")
     private Project project;
 
     @Column(name = "demand_revise_date")
-    private LocalDateTime revisionDate;
+    private LocalDateTime demandReviseDate;
 
     public DemandDTO entityToDto() {
         return DemandDTO.builder()
-                .idx(idx)
+                .demandIdx(demandIdx)
                 .project(project.entityToDto())
-                .revisionDate(revisionDate)
+                .demandReviseDate(demandReviseDate)
                 .build();
     }
 }

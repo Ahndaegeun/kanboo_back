@@ -17,45 +17,31 @@ import javax.persistence.*;
 public class DemandContent {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "demand_cn_idx")
-    private Long idx;
+    private Long demandCnIdx;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "demand_idx")
     private Demand demand;
 
-    @Column(name = "demand_cn_num")
-    private String demandNumber;
-
-    @Column(name = "demand_cn_se")
-    private String classification;
-
-    @Column(name = "demand_cn_id")
-    private String id;
-
-    @Column(name = "demand_cn_nm")
-    private String name;
-
-    @Column(name = "demand_cn_detail")
-    private String detail;
-
-    @Column(name = "demand_cn_requst_nm")
-    private String request;
-
-    @Column(name = "demand_cn_rm")
-    private String remark;
+    private String demandCnNum;
+    private String demandCnSe;
+    private String demandCnId;
+    private String demandCnNm;
+    private String demandCnDetail;
+    private String demandCnRequstNm;
+    private String demandCnRm;
 
     public DemandContentDTO entityToDto() {
         return DemandContentDTO.builder()
-                .idx(idx)
+                .demandCnIdx(demandCnIdx)
                 .demand(demand.entityToDto())
-                .demandNumber(demandNumber)
-                .classification(classification)
-                .id(id)
-                .name(name)
-                .detail(detail)
-                .request(request)
-                .remark(remark)
+                .demandCnNum(demandCnNum)
+                .demandCnSe(demandCnSe)
+                .demandCnId(demandCnId)
+                .demandCnNm(demandCnNm)
+                .demandCnDetail(demandCnDetail)
+                .demandCnRequstNm(demandCnRequstNm)
+                .demandCnRm(demandCnRm)
                 .build();
     }
 }

@@ -17,8 +17,7 @@ import javax.persistence.*;
 public class Compiler {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "com_idx")
-    private Long idx;
+    private Long comIdx;
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "prjct_idx")
@@ -28,19 +27,16 @@ public class Compiler {
     @JoinColumn(name = "com_idx")
     private Compiler compiler;
 
-    @Column(name = "com_se")
-    private String classification;
-
-    @Column(name = "com_nm")
-    private String name;
+    private String comSe;
+    private String comNm;
 
     public CompilerDTO entityToDto() {
         return CompilerDTO.builder()
-                .idx(idx)
+                .comIdx(comIdx)
                 .project(project.entityToDto())
                 .compiler(compiler.entityToDto())
-                .classification(classification)
-                .name(name)
+                .comSe(comSe)
+                .comNm(comNm)
                 .build();
     }
 }

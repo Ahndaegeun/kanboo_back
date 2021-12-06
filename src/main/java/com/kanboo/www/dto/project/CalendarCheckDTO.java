@@ -18,13 +18,13 @@ import javax.persistence.ManyToOne;
 @AllArgsConstructor
 public class CalendarCheckDTO {
 
-    private Long idx;
+    private Long calChkIdx;
     private CalendarDTO calendar;
     private MemberDTO member;
 
     public CalendarCheck dtoToEntity() {
         return CalendarCheck.builder()
-                .idx(idx)
+                .calChkIdx(calChkIdx)
                 .calendar(calendar.dtoToEntity())
                 .member(member.dtoToEntity())
                 .build();

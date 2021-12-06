@@ -19,8 +19,7 @@ import java.time.LocalDateTime;
 public class KanbanItem {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "kb_itm_idx")
-    private Long idx;
+    private Long kbItmIdx;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "kb_idx")
@@ -30,31 +29,22 @@ public class KanbanItem {
     @JoinColumn(name = "mem_idx")
     private Member member;
 
-    @Column(name = "kb_cn")
-    private String content;
-
-    @Column(name = "kb_itm_num")
-    private String itemNumber;
-
-    @Column(name = "kb_date")
-    private LocalDateTime kanbanDate;
-
-    @Column(name = "kb_badge")
-    private String badge;
-
-    @Column(name = "kb_color")
-    private String color;
+    private String kbCn;
+    private String kbItmNum;
+    private LocalDateTime kbDate;
+    private String kbBadge;
+    private String kbColor;
 
     public KanbanItemDTO entityToDto() {
         return KanbanItemDTO.builder()
-                .idx(idx)
+                .kbItmIdx(kbItmIdx)
                 .kanban(kanban.entityToDto())
                 .member(member.entityToDto())
-                .content(content)
-                .itemNumber(itemNumber)
-                .kanbanDate(kanbanDate)
-                .badge(badge)
-                .color(color)
+                .kbCn(kbCn)
+                .kbItmNum(kbItmNum)
+                .kbDate(kbDate)
+                .kbBadge(kbBadge)
+                .kbColor(kbColor)
                 .build();
     }
 }

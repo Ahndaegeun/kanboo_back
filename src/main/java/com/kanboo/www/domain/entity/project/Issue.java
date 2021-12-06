@@ -19,8 +19,7 @@ import java.time.LocalDateTime;
 public class Issue {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "issue_idx")
-    private Long idx;
+    private Long issueIdx;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "prjct_idx")
@@ -30,21 +29,18 @@ public class Issue {
     @JoinColumn(name = "mem_idx")
     private Member member;
 
-    @Column(name = "issue_cn")
-    private String content;
-    @Column(name = "issue_date")
+    private String issueCn;
     private LocalDateTime issueDate;
-    @Column(name = "issue_state")
-    private String state;
+    private String issueState;
 
     public IssueDTO entityToDto() {
         return IssueDTO.builder()
-                .idx(idx)
+                .issueIdx(issueIdx)
                 .project(project.entityToDto())
                 .member(member.entityToDto())
-                .content(content)
+                .issueCn(issueCn)
                 .issueDate(issueDate)
-                .state(state)
+                .issueState(issueState)
                 .build();
     }
 }

@@ -1,5 +1,4 @@
 package com.kanboo.www.domain.entity.project;
-
 import com.kanboo.www.dto.project.GanttDTO;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -18,45 +17,31 @@ import java.time.LocalDateTime;
 public class Gantt {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "gt_idx")
-    private Long idx;
+    private Long gtIdx;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "prjct_idx")
     private Project project;
 
-    @Column(name = "gt_state")
-    private String state;
-
-    @Column(name = "gt_priority")
-    private String priority;
-
-    @Column(name = "gt_progress")
-    private int progress;
-
-    @Column(name = "gt_start_date")
-    private LocalDateTime startDate;
-
-    @Column(name = "gt_end_date")
-    private LocalDateTime endDate;
-
-    @Column(name = "gt_explanation")
-    private  String explanation;
-
-    @Column(name = "gt_title")
-    private String title;
+    private String gtState;
+    private String gtPriority;
+    private int gtProgress;
+    private LocalDateTime gtStartDate;
+    private LocalDateTime gtEndDate;
+    private  String gtExplanation;
+    private String gtTitle;
 
     public GanttDTO entityToDto() {
         return GanttDTO.builder()
-                .idx(idx)
+                .gtIdx(gtIdx)
                 .project(project.entityToDto())
-                .state(state)
-                .priority(priority)
-                .progress(progress)
-                .startDate(startDate)
-                .endDate(endDate)
-                .explanation(explanation)
-                .title(title)
+                .gtState(gtState)
+                .gtPriority(gtPriority)
+                .gtProgress(gtProgress)
+                .gtStartDate(gtStartDate)
+                .gtEndDate(gtEndDate)
+                .gtExplanation(gtExplanation)
+                .gtTitle(gtTitle)
                 .build();
     }
 }
