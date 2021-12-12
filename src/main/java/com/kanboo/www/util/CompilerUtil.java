@@ -28,10 +28,6 @@ public class CompilerUtil {
 
     public String terminalCompile(String[] cmd) {
         StringBuffer output = new StringBuffer();
-        for(String str : cmd) {
-            System.out.print(str);
-        }
-        System.out.println();
         try {
             Process process = Runtime.getRuntime().exec(cmd);
             List<String> result = IOUtils.readLines(process.getInputStream());

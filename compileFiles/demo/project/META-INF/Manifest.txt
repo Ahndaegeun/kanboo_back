@@ -1,2 +1,2 @@
 Class-Path: ../class/
-Main-Class: controller.KanbooDemo
+Main-Class: Main

@@ -21,8 +21,8 @@ public class CompilerServiceImpl implements CompilerService {
     @Override
     public String runDemo(String code) {
         Map<String, String> map = new HashMap<>();
-        map.put("filePath", "/src/controller/");
-        map.put("fileName", "KanbooDemo");
+        map.put("filePath", "/src/");
+        map.put("fileName", "Main");
         map.put("fileDetail", code);
         map.put("project", "demo/project");
         boolean saveResult = saveCompileFile.saveFile(map);
@@ -34,7 +34,7 @@ public class CompilerServiceImpl implements CompilerService {
         Map<String, String> pathList = new HashMap<>();
         pathList.put("classPath", rootPath + "demo/project/class");
         pathList.put("srcPath", rootPath + "demo/project/src");
-        pathList.put("jarNameAndPath", rootPath + "demo/project/lib/compile.jar");
+        pathList.put("jarNameAndPath", rootPath + "demo/project/lib/result.jar");
         pathList.put("manifestNameAndPath", rootPath + "demo/project/META-INF/Manifest.txt");
         pathList.put("topPath", rootPath + "demo/project");
 

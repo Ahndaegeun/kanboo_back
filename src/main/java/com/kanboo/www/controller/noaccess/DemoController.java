@@ -23,6 +23,7 @@ public class DemoController {
 
     @PostMapping("/demoCompile")
     public String demoCompile(@RequestParam String code) {
+        System.out.println(code);
         return compilerService.runDemo(code);
     }
 
